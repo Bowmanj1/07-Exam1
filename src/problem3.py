@@ -2,8 +2,8 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Jacob Bowman.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -43,6 +43,22 @@ def run_test_problem3():
 
 
 def problem3(point, length, delta, window):
+    linev = rg.Line(point, rg.Point(point.x, point.y + length))
+    linev.thickness = 3
+    linev.color = 'black'
+    linev.attach_to(window)
+    m = length // delta
+    for k in range(m + 1):
+        lineh = rg.Line(rg.Point(point.x, point.y + (k * delta)), rg.Point(point.x + length + (k * 20), point.y + (k * delta)))
+        lineh.thickness = 3
+        if (k + 1) % 3 == 1:
+            lineh.color = 'magenta'
+        if (k + 1) % 3 == 2:
+            lineh.color = 'cyan'
+        if (k + 1) % 3 == 0:
+            lineh.color = 'spring green'
+        lineh.attach_to(window)
+    window.render()
     """
     See   problem3_picture.pdf   in this project for pictures
     that may help you better understand the following specification:
